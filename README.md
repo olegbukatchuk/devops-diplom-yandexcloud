@@ -80,6 +80,55 @@
 1. Terraform сконфигурирован и создание инфраструктуры посредством Terraform возможно без дополнительных ручных действий.
 2. Полученная конфигурация инфраструктуры является предварительной, поэтому в ходе дальнейшего выполнения задания возможны изменения.
 
+          root@yulka98356:/diplom/terraform# yc compute instances list
+          +----------------------+------------+---------------+---------+-----------------+-----------------+
+          |          ID          |    NAME    |    ZONE ID    | STATUS  |   EXTERNAL IP   |   INTERNAL IP   |
+          +----------------------+------------+---------------+---------+-----------------+-----------------+
+          | fhm1s0h4ug3upq3p13pt | db01       | ru-central1-a | RUNNING | 178.154.220.113 | 192.168.200.101 |
+          | fhm2je7t8bocm90cm5a9 | monitoring | ru-central1-a | RUNNING | 84.201.133.253  | 192.168.200.106 |
+          | fhm607b878no7l9h5l5d | runner     | ru-central1-a | RUNNING | 62.84.126.102   | 192.168.200.105 |
+          | fhm9n5k52dv2ravi286v | db02       | ru-central1-a | RUNNING | 51.250.76.210   | 192.168.200.102 |
+          | fhmb5krahohtgd9n92dg | gitlab     | ru-central1-a | RUNNING | 62.84.118.11    | 192.168.200.104 |
+          | fhmu1e9uceuldfu43ilj | yulka      | ru-central1-a | RUNNING | 178.154.223.216 | 192.168.200.100 |
+          | fhmug2ev9v80s52pgf6k | app        | ru-central1-a | RUNNING | 178.154.223.103 | 192.168.200.103 |
+          +----------------------+------------+---------------+---------+-----------------+-----------------+
+
+          root@yulka98356:/diplom/terraform# terraform workspace list
+            default
+          * stage
+
+          root@yulka98356:/diplom/terraform# terraform plan
+          yandex_storage_bucket.netback: Refreshing state... [id=netback]
+          yandex_dns_zone.yulka_tech: Refreshing state... [id=dns0lv862k711q9tll0c]
+          yandex_vpc_network.default: Refreshing state... [id=enp9k9g1ee3knfbc283j]
+          yandex_vpc_subnet.default-subnet[1]: Refreshing state... [id=e2ll3kcb9ek11dmpmj2s]
+          yandex_vpc_subnet.default-subnet[0]: Refreshing state... [id=e9bqn9n3ef160vencufk]
+          yandex_compute_instance.mashine[5]: Refreshing state... [id=fhm607b878no7l9h5l5d]
+          yandex_compute_instance.mashine[1]: Refreshing state... [id=fhm1s0h4ug3upq3p13pt]
+          yandex_compute_instance.mashine[6]: Refreshing state... [id=fhm2je7t8bocm90cm5a9]
+          yandex_compute_instance.mashine[0]: Refreshing state... [id=fhmu1e9uceuldfu43ilj]
+          yandex_compute_instance.mashine[3]: Refreshing state... [id=fhmug2ev9v80s52pgf6k]
+          yandex_compute_instance.mashine[2]: Refreshing state... [id=fhm9n5k52dv2ravi286v]
+          yandex_compute_instance.mashine[4]: Refreshing state... [id=fhmb5krahohtgd9n92dg]
+          local_file.inventory: Refreshing state... [id=c494ec5db980e2eeb1577ea38e23aa59748a6aff]
+          yandex_dns_recordset.revproxy: Refreshing state... [id=dns0lv862k711q9tll0c/yulka.tech./A]
+          yandex_dns_recordset.grafana: Refreshing state... [id=dns0lv862k711q9tll0c/grafana/A]
+          yandex_dns_recordset.wordpress: Refreshing state... [id=dns0lv862k711q9tll0c/www/A]
+          yandex_dns_recordset.gitlab: Refreshing state... [id=dns0lv862k711q9tll0c/gitlab/A]
+          yandex_dns_recordset.prometheus: Refreshing state... [id=dns0lv862k711q9tll0c/prometheus/A]
+          yandex_dns_recordset.alertmanager: Refreshing state... [id=dns0lv862k711q9tll0c/alertmanager/A]
+          null_resource.wait: Refreshing state... [id=3237978801675419595]
+          null_resource.mainmashine: Refreshing state... [id=8733893520506721115]
+          null_resource.db: Refreshing state... [id=3822471027789102155]
+          null_resource.wordpress: Refreshing state... [id=4174591509155173569]
+          null_resource.gitlab: Refreshing state... [id=8880175129766422041]
+          null_resource.monitoring: Refreshing state... [id=5861569939054646528]
+          null_resource.node_exporter: Refreshing state... [id=3593490473474055568]
+
+          No changes. Your infrastructure matches the configuration.
+
+          Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
+
 ---
 ### Установка Nginx и LetsEncrypt
 
