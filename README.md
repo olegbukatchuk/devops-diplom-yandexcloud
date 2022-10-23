@@ -214,6 +214,10 @@ ___
     - `https://www.you.domain` (WordPress)
 3. На сервере `you.domain` отредактирован upstream для выше указанного URL и он смотрит на виртуальную машину на которой установлен WordPress.
 4. В браузере можно открыть URL `https://www.you.domain` и увидеть главную страницу WordPress.
+
+![изображение](https://user-images.githubusercontent.com/91043924/197410660-608435d6-03f4-4963-9e27-c5746b9da19d.png)
+
+
 ---
 ### Установка Gitlab CE и Gitlab Runner
 
