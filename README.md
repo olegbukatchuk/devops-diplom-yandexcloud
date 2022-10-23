@@ -174,6 +174,21 @@ ___
 2. В кластере автоматически создаётся база данных c именем `wordpress`.
 3. В кластере автоматически создаётся пользователь `wordpress` с полными правами на базу `wordpress` и паролем `wordpress`.
 
+         mysql> show slave status\G
+         *************************** 1. row ***************************
+                        Slave_IO_State: Waiting for source to send event
+                           Master_Host: 192.168.200.101
+                           Master_User: wordpress
+                           Master_Port: 3306
+                         Connect_Retry: 60
+                       Master_Log_File: mysql-bin.000001
+                   Read_Master_Log_Pos: 157
+                        Relay_Log_File: mysql-relay-bin.000003
+                         Relay_Log_Pos: 373
+                 Relay_Master_Log_File: mysql-bin.000001
+                      Slave_IO_Running: Yes
+                     Slave_SQL_Running: Yes
+
 **Вы должны понимать, что в рамках обучения это допустимые значения, но в боевой среде использование подобных значений не приемлимо! Считается хорошей практикой использовать логины и пароли повышенного уровня сложности. В которых будут содержаться буквы верхнего и нижнего регистров, цифры, а также специальные символы!**
 
 ___
